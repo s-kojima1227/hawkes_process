@@ -6,7 +6,7 @@ class ParamsConverter:
         return np.concatenate([baselines, adjacencies.flatten(), decays.flatten()])
 
     @staticmethod
-    def unpack(params, num_markers, num_exps):
+    def unpack(params, num_markers, num_exps: int):
         baselines = params[:num_markers]
         adjacencies = params[num_markers:num_markers + num_markers * num_markers * num_exps].reshape(num_markers, num_markers, num_exps)
         decays = params[num_markers + num_markers * num_markers * num_exps:].reshape(num_exps, )
